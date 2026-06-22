@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: metier-backend
+    env: node
+    plan: free
+    buildCommand: npm install --prefix backend && npx prisma generate --schema=backend/prisma/schema.prisma && npm --prefix backend run build
+    startCommand: npm --prefix backend run start:prod
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: PORT
+        value: 3001
+
+  - type: web
+    name: metier-frontend
+    env: node
+    plan: free
+    buildCommand: npm install --prefix frontend && npm --prefix frontend run build
+    startCommand: npm --prefix frontend run start
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        value: https://metier-backend.onrender.com
+      - key: PORT
+        value: 3000

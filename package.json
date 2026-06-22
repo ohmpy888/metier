@@ -1,0 +1,17 @@
+{
+  "name": "metier-blog-workspace",
+  "version": "1.0.0",
+  "scripts": {
+    "backend": "npm --prefix backend run start:dev",
+    "frontend": "npm --prefix frontend run dev",
+    "dev": "npx concurrently \"npm run backend\" \"npm run frontend\"",
+    "build:backend": "npm --prefix backend run build",
+    "build:frontend": "npm --prefix frontend run build",
+    "build": "npm run build:backend && npm run build:frontend",
+    "lint": "npx concurrently \"npm --prefix backend run lint\" \"npm --prefix frontend run lint\"",
+    "lint:fix": "npx concurrently \"npm --prefix backend run lint\" \"npm --prefix frontend run lint -- --fix\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
