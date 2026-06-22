@@ -1,6 +1,7 @@
 services:
   - type: web
     name: metier-backend
+    region: singapore
     env: node
     plan: free
     buildCommand: npm install --prefix backend && npm --prefix backend run prisma:generate && npm --prefix backend run build
@@ -15,6 +16,7 @@ services:
 
   - type: web
     name: metier-frontend
+    region: singapore
     env: node
     plan: free
     buildCommand: npm install --prefix frontend && npm --prefix frontend run build
