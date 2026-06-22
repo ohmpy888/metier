@@ -4,7 +4,7 @@ services:
     region: singapore
     env: node
     plan: free
-    buildCommand: npm install --prefix backend && npm --prefix backend run prisma:generate && npm --prefix backend run build
+    buildCommand: npm install --prefix backend && npm --prefix backend run prisma:generate && npx prisma migrate deploy --schema=backend/prisma/schema.prisma && npm --prefix backend run build
     startCommand: npm --prefix backend run start:prod
     envVars:
       - key: DATABASE_URL
@@ -23,6 +23,6 @@ services:
     startCommand: npm --prefix frontend run start
     envVars:
       - key: NEXT_PUBLIC_API_URL
-        value: https://metier-backend.onrender.com
+        value: https://metier-backend-n9k2.onrender.com
       - key: PORT
         value: 3000
